@@ -21,6 +21,7 @@ Use $bemoskill-cards to turn this topic into dark/light Xiaohongshu cards plus W
 - Xiaohongshu / Rednote portrait cards: `1080x1440`
 - WeChat official account covers: `900x383`
 - X / Twitter headers: `1500x500`
+- Platform covers are generated once per style/platform as whole-content covers, not one per subtopic.
 - Two visual modes:
   - `dark`: black, white type, sparse technical grid
   - `light`: warm paper, charcoal type, restrained editorial accent

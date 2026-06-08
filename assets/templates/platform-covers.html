@@ -52,7 +52,7 @@
         height: 500px;
       }
 
-      .vercel {
+      .dark-theme {
         color: #fff;
         background:
           linear-gradient(rgba(21,21,21,0.9) 1px, transparent 1px),
@@ -62,7 +62,7 @@
         background-size: 72px 72px, 72px 72px, auto, auto;
       }
 
-      .anthropic {
+      .light-theme {
         color: #191512;
         background:
           linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0) 52%),
@@ -79,7 +79,7 @@
         z-index: 5;
       }
 
-      .vercel {
+      .dark-theme {
         --muted: #9a9a9a;
         --line: #252525;
         --accent: #00c49a;
@@ -88,7 +88,7 @@
         --panel-border: #2a2a2a;
       }
 
-      .anthropic {
+      .light-theme {
         --muted: #756c61;
         --line: #d8ccbd;
         --accent: #b85c38;
@@ -169,7 +169,7 @@
         z-index: 3;
       }
 
-      .anthropic .pill {
+      .light-theme .pill {
         background: rgba(255,255,255,0.38);
       }
 
@@ -241,11 +241,11 @@
         text-align: left;
       }
 
-      .vercel {
+      .dark-theme {
         --body: #d6d6d6;
       }
 
-      .anthropic {
+      .light-theme {
         --body: #3e372f;
       }
 
@@ -334,128 +334,32 @@
   </head>
   <body>
     <main class="stage">
-      <section class="cover-card wechat vercel" data-style="dark" data-platform="wechat" data-name="01-react-engineering">
+      <section class="cover-card wechat dark-theme" data-style="dark" data-platform="wechat" data-name="cover">
         <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
         <div class="pill">ReactGo</div>
         <div class="content"><div class="eyebrow"><span class="dot"></span><span>#前端工程化</span></div><h1>React 工程化笔记</h1><p class="lede">从组件、状态、接口到部署，把前端代码写成可维护的产品系统。</p></div>
         <div class="meta"><span>Build like a product</span></div><div class="signature">ReactGo</div>
       </section>
-      <section class="cover-card wechat vercel" data-style="dark" data-platform="wechat" data-name="02-architecture">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#架构感</span></div><h1>先分层，再写代码</h1><p class="lede">展示、数据、交互、边界分开，复用和隔离才会变清楚。</p></div>
-        <div class="meta"><span>System first</span></div><div class="signature">ReactGo</div>
-      </section>
-      <section class="cover-card wechat vercel" data-style="dark" data-platform="wechat" data-name="03-performance">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#性能优化</span></div><h1>先减少重渲染</h1><p class="lede">性能问题通常不是少写了 memo，而是状态范围和数据结构出了问题。</p></div>
-        <div class="meta"><span>Performance</span></div><div class="signature">ReactGo</div>
-      </section>
-      <section class="cover-card wechat vercel" data-style="dark" data-platform="wechat" data-name="04-components">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#组件设计</span></div><h1>组件不是越小越好</h1><p class="lede">拆分标准不是行数，而是职责、变化原因和复用边界。</p></div>
-        <div class="meta"><span>Components</span></div><div class="signature">ReactGo</div>
-      </section>
-      <section class="cover-card wechat vercel" data-style="dark" data-platform="wechat" data-name="05-ai-coding">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#AI 编程</span></div><h1>会提需求更重要</h1><p class="lede">把目标、边界和验收标准讲清楚，AI 才能成为工程搭档。</p></div>
-        <div class="meta"><span>AI coding</span></div><div class="signature">ReactGo</div>
-      </section>
 
-      <section class="cover-card twitter vercel" data-style="dark" data-platform="twitter" data-name="01-react-engineering">
+      <section class="cover-card twitter dark-theme" data-style="dark" data-platform="twitter" data-name="cover">
         <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
         <div class="pill">ReactGo</div>
         <div class="content"><div class="eyebrow"><span class="dot"></span><span>#前端工程化</span></div><h1>React 工程化笔记</h1><p class="lede">从组件、状态、接口到部署，把前端代码写成可维护的产品系统。</p></div>
         <div class="side-note">Build like a product, not just a component.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>Frontend notes</span></div><div class="signature">Trying to be a SUPERONE:)</div>
       </section>
-      <section class="cover-card twitter vercel" data-style="dark" data-platform="twitter" data-name="02-architecture">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#架构感</span></div><h1>先分层，再写代码</h1><p class="lede">展示、数据、交互、边界分开，复用和隔离才会变清楚。</p></div>
-        <div class="side-note">System first. Code second.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>Architecture</span></div><div class="signature">Trying to be a SUPERONE:)</div>
-      </section>
-      <section class="cover-card twitter vercel" data-style="dark" data-platform="twitter" data-name="03-performance">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#性能优化</span></div><h1>先减少重渲染</h1><p class="lede">性能问题通常不是少写了 memo，而是状态范围和数据结构出了问题。</p></div>
-        <div class="side-note">Make state smaller. Make updates quieter.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>Performance</span></div><div class="signature">Trying to be a SUPERONE:)</div>
-      </section>
-      <section class="cover-card twitter vercel" data-style="dark" data-platform="twitter" data-name="04-components">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#组件设计</span></div><h1>组件不是越小越好</h1><p class="lede">拆分标准不是行数，而是职责、变化原因和复用边界。</p></div>
-        <div class="side-note">Components should reduce mental load.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>Components</span></div><div class="signature">Trying to be a SUPERONE:)</div>
-      </section>
-      <section class="cover-card twitter vercel" data-style="dark" data-platform="twitter" data-name="05-ai-coding">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#AI 编程</span></div><h1>会提需求更重要</h1><p class="lede">把目标、边界和验收标准讲清楚，AI 才能成为工程搭档。</p></div>
-        <div class="side-note">Good prompts start with good engineering intent.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>AI coding</span></div><div class="signature">Trying to be a SUPERONE:)</div>
-      </section>
 
-      <section class="cover-card wechat anthropic" data-style="light" data-platform="wechat" data-name="01-react-engineering">
+      <section class="cover-card wechat light-theme" data-style="light" data-platform="wechat" data-name="cover">
         <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
         <div class="pill">ReactGo</div>
         <div class="content"><div class="eyebrow"><span class="dot"></span><span>#前端工程化</span></div><h1>React 工程化笔记</h1><p class="lede">从组件、状态、接口到部署，把前端代码写成可维护的产品系统。</p></div>
         <div class="meta"><span>Build like a product</span></div><div class="signature">ReactGo</div>
       </section>
-      <section class="cover-card wechat anthropic" data-style="light" data-platform="wechat" data-name="02-architecture">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#架构感</span></div><h1>先分层，再写代码</h1><p class="lede">展示、数据、交互、边界分开，复用和隔离才会变清楚。</p></div>
-        <div class="meta"><span>System first</span></div><div class="signature">ReactGo</div>
-      </section>
-      <section class="cover-card wechat anthropic" data-style="light" data-platform="wechat" data-name="03-performance">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#性能优化</span></div><h1>先减少重渲染</h1><p class="lede">性能问题通常不是少写了 memo，而是状态范围和数据结构出了问题。</p></div>
-        <div class="meta"><span>Performance</span></div><div class="signature">ReactGo</div>
-      </section>
-      <section class="cover-card wechat anthropic" data-style="light" data-platform="wechat" data-name="04-components">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#组件设计</span></div><h1>组件不是越小越好</h1><p class="lede">拆分标准不是行数，而是职责、变化原因和复用边界。</p></div>
-        <div class="meta"><span>Components</span></div><div class="signature">ReactGo</div>
-      </section>
-      <section class="cover-card wechat anthropic" data-style="light" data-platform="wechat" data-name="05-ai-coding">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>Wechat cover</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#AI 编程</span></div><h1>会提需求更重要</h1><p class="lede">把目标、边界和验收标准讲清楚，AI 才能成为工程搭档。</p></div>
-        <div class="meta"><span>AI coding</span></div><div class="signature">ReactGo</div>
-      </section>
 
-      <section class="cover-card twitter anthropic" data-style="light" data-platform="twitter" data-name="01-react-engineering">
+      <section class="cover-card twitter light-theme" data-style="light" data-platform="twitter" data-name="cover">
         <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
         <div class="pill">ReactGo</div>
         <div class="content"><div class="eyebrow"><span class="dot"></span><span>#前端工程化</span></div><h1>React 工程化笔记</h1><p class="lede">从组件、状态、接口到部署，把前端代码写成可维护的产品系统。</p></div>
         <div class="side-note">Build like a product, not just a component.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>Frontend notes</span></div><div class="signature">Trying to be a SUPERONE:)</div>
-      </section>
-      <section class="cover-card twitter anthropic" data-style="light" data-platform="twitter" data-name="02-architecture">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#架构感</span></div><h1>先分层，再写代码</h1><p class="lede">展示、数据、交互、边界分开，复用和隔离才会变清楚。</p></div>
-        <div class="side-note">System first. Code second.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>Architecture</span></div><div class="signature">Trying to be a SUPERONE:)</div>
-      </section>
-      <section class="cover-card twitter anthropic" data-style="light" data-platform="twitter" data-name="03-performance">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#性能优化</span></div><h1>先减少重渲染</h1><p class="lede">性能问题通常不是少写了 memo，而是状态范围和数据结构出了问题。</p></div>
-        <div class="side-note">Make state smaller. Make updates quieter.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>Performance</span></div><div class="signature">Trying to be a SUPERONE:)</div>
-      </section>
-      <section class="cover-card twitter anthropic" data-style="light" data-platform="twitter" data-name="04-components">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#组件设计</span></div><h1>组件不是越小越好</h1><p class="lede">拆分标准不是行数，而是职责、变化原因和复用边界。</p></div>
-        <div class="side-note">Components should reduce mental load.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>Components</span></div><div class="signature">Trying to be a SUPERONE:)</div>
-      </section>
-      <section class="cover-card twitter anthropic" data-style="light" data-platform="twitter" data-name="05-ai-coding">
-        <div class="brand"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="brand-text"><strong>ReactGo</strong><span>X header</span></div></div>
-        <div class="pill">ReactGo</div>
-        <div class="content"><div class="eyebrow"><span class="dot"></span><span>#AI 编程</span></div><h1>会提需求更重要</h1><p class="lede">把目标、边界和验收标准讲清楚，AI 才能成为工程搭档。</p></div>
-        <div class="side-note">Good prompts start with good engineering intent.</div><div class="meta"><strong>ReactGo</strong><span>/</span><span>AI coding</span></div><div class="signature">Trying to be a SUPERONE:)</div>
       </section>
     </main>
   </body>

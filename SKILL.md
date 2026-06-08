@@ -7,8 +7,8 @@ description: Generate BemoSkill dark/light social card systems for Xiaohongshu/R
 
 Create reusable social card and cover packages with deterministic HTML/CSS rendering. The default visual system has two modes:
 
-- **Dark**: black background, white type, sparse grid, Vercel-like technical clarity.
-- **Light**: warm paper background, charcoal type, restrained accent, Anthropic-like editorial calm.
+- **Dark**: black background, white type, sparse grid, technical clarity.
+- **Light**: warm paper background, charcoal type, restrained accent, editorial calm.
 
 Prefer local HTML/CSS rendering over image generation when exact Chinese text, logo placement, and platform dimensions matter.
 
@@ -42,7 +42,8 @@ Load only what is needed:
 
 2. **Plan**
    - For carousels, make 5-10 pages: cover plus one idea per card.
-   - For platform covers, make 3-5 title/topic variants per platform unless the user gives exact titles.
+   - For platform covers, make exactly one whole-content cover per style/platform unless the user explicitly asks for variants.
+   - Do not turn subtopics or carousel card titles into separate WeChat/X covers.
    - Remove page numbers from standalone covers.
 
 3. **Build**

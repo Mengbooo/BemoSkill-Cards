@@ -8,6 +8,15 @@ Use these defaults unless the user requests another size.
 | WeChat official account cover | `900x383` | `.cover-card.wechat` | Standalone cover. Do not show page numbers. |
 | X / Twitter header | `1500x500` | `.cover-card.twitter` | Keep important text away from the far edges. |
 
+For WeChat and X/Twitter, generate one cover per style/platform by default:
+
+```text
+output/platform-covers/dark/wechat/cover.png
+output/platform-covers/dark/twitter/cover.png
+output/platform-covers/light/wechat/cover.png
+output/platform-covers/light/twitter/cover.png
+```
+
 Output folders:
 
 ```text

@@ -13,7 +13,8 @@
 - Make cover titles short enough to read at thumbnail size.
 - Keep subtitles under one sentence.
 - For carousel bodies, one idea per card.
-- For platform covers, remove pagination and use topic tags instead.
+- For platform covers, create one whole-content cover per style/platform. Do not create one cover per subtopic.
+- Remove pagination and use topic tags instead.
 
 ## Rendering
 
@@ -25,7 +26,8 @@ node scripts/render-html-assets.mjs \
   --out output/platform-covers \
   --selector .cover-card \
   --group-attrs data-style,data-platform \
-  --viewport 1600x900
+  --viewport 1600x900 \
+  --clean true
 ```
 
 Generate an overview:
@@ -35,7 +37,7 @@ node scripts/make-overview.mjs \
   --root output/platform-covers \
   --out output/platform-covers/overview.png \
   --thumb 300x128 \
-  --cols 5
+  --cols 4
 ```
 
 ## QA

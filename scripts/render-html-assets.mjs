@@ -43,6 +43,7 @@ const htmlPath = path.resolve(args.html || "");
 const outputDir = path.resolve(args.out || "output/rendered");
 const selector = args.selector || ".card";
 const nameAttr = args["name-attr"] || "data-name";
+const cleanOutput = args.clean === "true";
 const groupAttrs = (args["group-attrs"] || "")
   .split(",")
   .map((item) => item.trim())
@@ -54,6 +55,9 @@ if (!args.html) {
 }
 
 const { chromium } = loadPackage("playwright");
+if (cleanOutput) {
+  await fs.rm(outputDir, { recursive: true, force: true });
+}
 await fs.mkdir(outputDir, { recursive: true });
 
 const browser = await chromium.launch({ headless: true });
