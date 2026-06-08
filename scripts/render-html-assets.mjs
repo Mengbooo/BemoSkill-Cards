@@ -3,15 +3,27 @@ import path from "node:path";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
-const bundledModules =
-  "/Users/qiumengbo.123/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules";
 
 function loadPackage(name) {
   try {
     return require(name);
-  } catch {
-    const root = process.env.NODE_PATH || bundledModules;
-    return require(path.join(root, name));
+  } catch (error) {
+    const roots = (process.env.NODE_PATH || "")
+      .split(path.delimiter)
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    for (const root of roots) {
+      try {
+        return require(path.join(root, name));
+      } catch {
+        // Try the next NODE_PATH entry.
+      }
+    }
+
+    throw new Error(
+      `Missing dependency "${name}". Run npm install in this skill repository, or set NODE_PATH to a node_modules directory. Original error: ${error.message}`
+    );
   }
 }
 
