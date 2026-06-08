@@ -1,8 +1,12 @@
 {
-  "name": "social-card-skill",
+  "name": "BemoSkill-Cards",
   "version": "0.1.0",
   "type": "module",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mengbooo/BemoSkill-Cards.git"
+  },
   "scripts": {
     "render:xhs-dark": "node scripts/render-html-assets.mjs --html assets/templates/xhs-dark.html --out output/xhs-dark --selector .card --viewport 1200x1600 --background '#000'",
     "render:xhs-light": "node scripts/render-html-assets.mjs --html assets/templates/xhs-light.html --out output/xhs-light --selector .card --viewport 1200x1600 --background '#f4efe7'",

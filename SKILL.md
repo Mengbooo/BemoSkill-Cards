@@ -1,9 +1,9 @@
 ---
-name: social-card-skill
-description: Generate brandable dark/light social card systems for Xiaohongshu/Rednote 3:4 carousels, WeChat official account covers, and X/Twitter headers from article titles, notes, product ideas, or technical content. Use when the user asks for 小红书封面/正文卡片, 微信公众号封面, 推特/X 封面, dark/light social cards, ReactGo-style cards, or reusable social cover workflows.
+name: bemoskill-cards
+description: Generate BemoSkill dark/light social card systems for Xiaohongshu/Rednote 3:4 carousels, WeChat official account covers, and X/Twitter headers from article titles, notes, product ideas, or technical content. Use when the user asks for BemoSkill-Cards, 小红书封面/正文卡片, 微信公众号封面, 推特/X 封面, dark/light social cards, ReactGo-style cards, or reusable social cover workflows.
 ---
 
-# Social Card Skill
+# BemoSkill Cards
 
 Create reusable social card and cover packages with deterministic HTML/CSS rendering. The default visual system has two modes:
 
