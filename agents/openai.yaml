@@ -1,0 +1,8 @@
+interface:
+  display_name: "Social Card Skill"
+  short_description: "Create dark/light social cards and platform covers."
+  brand_color: "#111111"
+  default_prompt: "Use $social-card-skill to turn this topic into dark/light Xiaohongshu cards plus WeChat and X/Twitter covers."
+
+policy:
+  allow_implicit_invocation: true

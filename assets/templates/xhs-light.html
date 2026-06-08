@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ReactGo XHS Cards</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500;600;700;800;900&display=swap");
+
+      @font-face {
+        font-family: "ReactGo Noto Serif SC";
+        src: url("../fonts/noto-serif-sc-900.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 900;
+        font-display: block;
+      }
+
+      :root {
+        --bg: #000;
+        --fg: #fff;
+        --muted: #8f8f8f;
+        --line: #242424;
+        --line-soft: #151515;
+        --accent: #00c49a;
+        --blue: #053bea;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #111;
+        font-family: "Google Sans", "Product Sans", "Noto Sans SC", "Aptos", "Helvetica Neue",
+          ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+          "Microsoft YaHei", sans-serif;
+        color: var(--fg);
+      }
+
+      .stage {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        gap: 24px;
+        padding: 24px;
+      }
+
+      .card {
+        position: relative;
+        width: 1080px;
+        height: 1440px;
+        overflow: hidden;
+        isolation: isolate;
+        background:
+          linear-gradient(var(--line-soft) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line-soft) 1px, transparent 1px),
+          radial-gradient(circle at 72% 16%, rgba(255,255,255,0.08), transparent 26%),
+          var(--bg);
+        background-size: 90px 90px, 90px 90px, auto, auto;
+        transform-origin: top left;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1px solid #1f1f1f;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        left: 88px;
+        right: 88px;
+        bottom: 158px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #fff 14%, #fff 86%, transparent);
+        opacity: 0.28;
+      }
+
+      .brand {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        top: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 3;
+      }
+
+      .brand-left {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .logo {
+        width: 92px;
+        height: 92px;
+        object-fit: cover;
+        border-radius: 22px;
+        box-shadow: 0 0 0 1px rgba(255,255,255,0.18);
+      }
+
+      .ip {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .ip strong {
+        font-size: 32px;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .ip span {
+        color: var(--muted);
+        font-size: 18px;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        height: 48px;
+        padding: 0 22px;
+        border: 1px solid #333;
+        border-radius: 999px;
+        color: #f5f5f5;
+        font-size: 20px;
+        background: rgba(255,255,255,0.035);
+      }
+
+      .content {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        top: 246px;
+        bottom: 168px;
+        z-index: 3;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--muted);
+        font-size: 25px;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 28px rgba(0,196,154,0.75);
+      }
+
+      h1 {
+        margin: 50px 0 0;
+        max-width: 900px;
+        color: var(--fg);
+        font-family: "ReactGo Noto Serif SC", "Noto Serif SC", "Songti SC", "SimSun", serif;
+        font-size: 104px;
+        line-height: 1.02;
+        font-weight: 900;
+        letter-spacing: 0;
+        text-align: left;
+      }
+
+      .cover h1 {
+        max-width: 790px;
+        margin-top: 88px;
+        font-size: 118px;
+        line-height: 1.08;
+      }
+
+      .cover {
+        background:
+          radial-gradient(circle at 50% 29%, rgba(255,255,255,0.075), transparent 28%),
+          linear-gradient(var(--line-soft) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line-soft) 1px, transparent 1px),
+          var(--bg);
+        background-size: auto, 120px 120px, 120px 120px, auto;
+      }
+
+      .cover::after {
+        display: none;
+      }
+
+      .cover .content {
+        top: 302px;
+      }
+
+      .cover .brand {
+        right: auto;
+        width: auto;
+        justify-content: flex-start;
+      }
+
+      .cover .brand-left {
+        gap: 18px;
+      }
+
+      .cover .logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 17px;
+      }
+
+      .cover .ip span,
+      .cover .tag {
+        display: none;
+      }
+
+      .cover .lede {
+        max-width: 780px;
+        margin-top: 50px;
+        font-size: 34px;
+        text-align: left;
+      }
+
+      .cover-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 76px;
+        padding-top: 34px;
+        border-top: 1px solid #2a2a2a;
+        color: #a8a8a8;
+        font-size: 25px;
+        letter-spacing: 0;
+      }
+
+      .cover-kicker strong {
+        color: #fff;
+        font-weight: 700;
+      }
+
+      .cover .mark,
+      .cover-symbol {
+        display: none;
+      }
+
+      .cover .footer {
+        align-items: flex-end;
+      }
+
+      .cover-signature {
+        display: grid;
+        justify-items: start;
+        gap: 8px;
+        min-width: 310px;
+        text-align: left;
+      }
+
+      .cover-signature strong {
+        color: #fff;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .cover-signature span {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .cover-signature em {
+        color: #d7d7d7;
+        font-size: 19px;
+        font-style: normal;
+        line-height: 1.2;
+      }
+
+      .lede {
+        margin-top: 42px;
+        max-width: 770px;
+        color: #cfcfcf;
+        font-size: 36px;
+        line-height: 1.48;
+        letter-spacing: 0;
+      }
+
+      .mono {
+        margin-top: 58px;
+        display: inline-flex;
+        align-items: center;
+        min-height: 72px;
+        padding: 0 24px;
+        border: 1px solid #2b2b2b;
+        border-radius: 8px;
+        color: #f6f6f6;
+        background: #050505;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 26px;
+        letter-spacing: 0;
+      }
+
+      .points {
+        display: grid;
+        gap: 22px;
+        margin-top: 58px;
+      }
+
+      .point {
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        gap: 22px;
+        align-items: start;
+        padding: 26px 0;
+        border-top: 1px solid #252525;
+      }
+
+      .point:last-child {
+        border-bottom: 1px solid #252525;
+      }
+
+      .num {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        color: #000;
+        background: #fff;
+        font-size: 22px;
+        font-weight: 800;
+      }
+
+      .point h2 {
+        margin: 0;
+        color: #fff;
+        font-size: 34px;
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      .point p {
+        margin: 12px 0 0;
+        color: #bcbcbc;
+        font-size: 27px;
+        line-height: 1.42;
+        letter-spacing: 0;
+      }
+
+      .quote {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        bottom: 245px;
+        padding-top: 30px;
+        border-top: 1px solid #2b2b2b;
+        color: #f2f2f2;
+        font-size: 36px;
+        line-height: 1.35;
+        letter-spacing: 0;
+      }
+
+      .footer {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        bottom: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #898989;
+        font-size: 20px;
+        z-index: 4;
+      }
+
+      .footer b {
+        color: #fff;
+        font-weight: 650;
+      }
+
+      .mark {
+        position: absolute;
+        right: -92px;
+        bottom: -70px;
+        width: 390px;
+        height: 390px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .mark::before,
+      .mark::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+      }
+
+      .mark::before {
+        inset: 72px;
+        border: 1px solid rgba(255,255,255,0.16);
+      }
+
+      .mark::after {
+        inset: 168px;
+        background: #fff;
+      }
+
+      .terminal {
+        margin-top: 56px;
+        border: 1px solid #2a2a2a;
+        border-radius: 8px;
+        background: #050505;
+        overflow: hidden;
+      }
+
+      .bar {
+        height: 48px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 18px;
+        border-bottom: 1px solid #222;
+      }
+
+      .bar i {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #555;
+      }
+
+      .code {
+        padding: 30px;
+        color: #e8e8e8;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 27px;
+        line-height: 1.7;
+        white-space: pre-line;
+      }
+
+      .code .muted {
+        color: #787878;
+      }
+
+      .code .green {
+        color: #48e0b5;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 58px;
+      }
+
+      .mini {
+        min-height: 210px;
+        padding: 26px;
+        border: 1px solid #292929;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.025);
+      }
+
+      .mini small {
+        display: block;
+        color: #8d8d8d;
+        font-size: 20px;
+      }
+
+      .mini strong {
+        display: block;
+        margin-top: 22px;
+        color: #fff;
+        font-size: 33px;
+        line-height: 1.16;
+        letter-spacing: 0;
+      }
+
+      .cover-symbol {
+        position: absolute;
+        right: 88px;
+        top: 456px;
+        display: grid;
+        place-items: center;
+        width: 238px;
+        height: 238px;
+        border: 1px solid rgba(255,255,255,0.22);
+        border-radius: 50%;
+        font-size: 92px;
+        font-weight: 800;
+      }
+
+      .cover-symbol::after {
+        content: "";
+        position: absolute;
+        inset: 38px;
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 50%;
+      }
+
+      /* Anthropic-inspired variant: warm paper, charcoal type, restrained accents. */
+      :root {
+        --bg: #f4efe7;
+        --fg: #191512;
+        --muted: #756c61;
+        --line: #d8cec0;
+        --line-soft: #eadfd1;
+        --accent: #b85c38;
+      }
+
+      body {
+        background: #e5d8c9;
+      }
+
+      .card {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0) 46%),
+          radial-gradient(circle at 78% 18%, rgba(184,92,56,0.09), transparent 31%),
+          var(--bg);
+        background-size: auto;
+      }
+
+      .card::before {
+        border-color: #d9cebf;
+      }
+
+      .card::after {
+        background: #d6cabc;
+        opacity: 1;
+      }
+
+      .brand {
+        top: 78px;
+      }
+
+      .brand-left {
+        gap: 18px;
+      }
+
+      .logo {
+        width: 76px;
+        height: 76px;
+        border-radius: 18px;
+        box-shadow: 0 0 0 1px rgba(25,21,18,0.12);
+      }
+
+      .ip span {
+        font-size: 16px;
+      }
+
+      .tag {
+        height: 44px;
+        border-color: #d7ccbd;
+        color: #332c25;
+        background: rgba(255,255,255,0.38);
+        font-size: 18px;
+      }
+
+      .eyebrow {
+        color: var(--muted);
+      }
+
+      .dot {
+        background: var(--accent);
+        box-shadow: none;
+      }
+
+      h1 {
+        color: var(--fg);
+        font-size: 98px;
+        line-height: 1.08;
+      }
+
+      .cover {
+        background:
+          radial-gradient(circle at 72% 24%, rgba(184,92,56,0.1), transparent 30%),
+          var(--bg);
+      }
+
+      .cover h1 {
+        max-width: 820px;
+        font-size: 116px;
+        line-height: 1.1;
+      }
+
+      .cover .logo {
+        width: 76px;
+        height: 76px;
+        border-radius: 18px;
+      }
+
+      .cover-kicker {
+        border-top-color: #d7cbbc;
+        color: var(--muted);
+      }
+
+      .cover-kicker strong,
+      .cover-signature strong,
+      .footer b {
+        color: var(--fg);
+      }
+
+      .cover-signature em {
+        color: #3d352d;
+      }
+
+      .lede {
+        color: #3e372f;
+      }
+
+      .point {
+        border-top-color: #d8ccbd;
+      }
+
+      .point:last-child {
+        border-bottom-color: #d8ccbd;
+      }
+
+      .num {
+        color: #fff7ec;
+        background: #241d18;
+      }
+
+      .point h2,
+      .mini strong {
+        color: var(--fg);
+      }
+
+      .point p {
+        color: #554c42;
+      }
+
+      .terminal,
+      .mini,
+      .mono {
+        border-color: #d7cabc;
+        background: rgba(255,255,255,0.34);
+      }
+
+      .bar {
+        border-bottom-color: #d7cabc;
+      }
+
+      .bar i {
+        background: #b8ab9d;
+      }
+
+      .code,
+      .mono {
+        color: #2c241d;
+      }
+
+      .code .muted,
+      .mini small,
+      .footer {
+        color: var(--muted);
+      }
+
+      .code .green {
+        color: #9c4e31;
+      }
+
+      .quote {
+        border-top-color: #d8ccbd;
+        color: var(--fg);
+      }
+
+      .mark {
+        display: none;
+      }
+
+      .cover .brand {
+        right: 80px;
+        width: auto;
+        justify-content: space-between;
+      }
+
+      .cover .tag {
+        display: inline-flex;
+      }
+
+      .cover .content {
+        top: 246px;
+      }
+
+      .cover h1 {
+        max-width: 900px;
+        margin-top: 50px;
+        font-size: 98px;
+        line-height: 1.08;
+      }
+
+      .cover .lede {
+        margin-top: 42px;
+      }
+
+      @media screen {
+        .card {
+          transform: scale(0.25);
+          margin-bottom: -1080px;
+          margin-right: -810px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage">
+      <section class="card cover" data-name="01-cover">
+        <div class="brand">
+          <div class="brand-left">
+            <img class="logo" src="../reactgo-logo.jpg" alt="ReactGo logo" />
+            <div class="ip"><strong>ReactGo</strong><span></span></div>
+          </div>
+          <div class="tag">ReactGo</div>
+        </div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>给前端人的工程化笔记</span></div>
+          <h1>React 工程化笔记</h1>
+          <p class="lede">从组件、状态、接口到部署，把前端代码写成一个可维护的产品系统。</p>
+          <div class="cover-kicker"><strong>10 Cards</strong><span>/</span><span>Build like a product</span></div>
+        </div>
+        <div class="mark"></div>
+        <div class="footer">
+          <span>01 / 10</span>
+          <b>ReactGo</b>
+        </div>
+      </section>
+
+      <section class="card" data-name="02-architecture">
+        <div class="brand"><div class="brand-left"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="ip"><strong>ReactGo</strong><span>System first</span></div></div><div class="tag">ReactGo</div></div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>01 · 架构感</span></div>
+          <h1>先分层，再写代码</h1>
+          <p class="lede">把页面拆成展示、数据、交互、边界四层。你会更早发现：哪里该复用，哪里该隔离。</p>
+          <div class="points">
+            <div class="point"><span class="num">1</span><div><h2>展示层只关心可见状态</h2><p>不要把请求、缓存和权限塞进每个组件。</p></div></div>
+            <div class="point"><span class="num">2</span><div><h2>业务逻辑有稳定入口</h2><p>hook 可以复用，但边界要比技巧更重要。</p></div></div>
+            <div class="point"><span class="num">3</span><div><h2>异常路径也要被设计</h2><p>loading、empty、error 是产品体验的一部分。</p></div></div>
+          </div>
+        </div>
+        <div class="mark"></div><div class="footer"><span>02 / 10</span><b>ReactGo</b></div>
+      </section>
+
+      <section class="card" data-name="03-performance">
+        <div class="brand"><div class="brand-left"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="ip"><strong>ReactGo</strong><span>Performance</span></div></div><div class="tag">ReactGo</div></div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>02 · 性能不是玄学</span></div>
+          <h1>先减少重渲染，再谈优化</h1>
+          <p class="lede">性能问题通常不是少写了 memo，而是状态范围太大、数据结构不稳、组件边界太松。</p>
+          <div class="terminal"><div class="bar"><i></i><i></i><i></i></div><div class="code"><span class="muted">// 问自己三个问题</span>
+state 放得是不是太高？
+props 每次是不是都变？
+列表是不是缺少虚拟化？</div></div>
+        </div>
+        <div class="mark"></div><div class="footer"><span>03 / 10</span><b>ReactGo</b></div>
+      </section>
+
+      <section class="card" data-name="04-components">
+        <div class="brand"><div class="brand-left"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="ip"><strong>ReactGo</strong><span>Components</span></div></div><div class="tag">ReactGo</div></div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>03 · 组件设计</span></div>
+          <h1>组件不是越小越好</h1>
+          <p class="lede">好组件应该降低理解成本。拆分的标准不是行数，而是职责、变化原因和复用边界。</p>
+          <div class="split">
+            <div class="mini"><small>应该拆</small><strong>变化原因不同，测试边界清晰</strong></div>
+            <div class="mini"><small>不必拆</small><strong>只是为了少看几行代码</strong></div>
+            <div class="mini"><small>应该暴露</small><strong>少量稳定、可组合的 props</strong></div>
+            <div class="mini"><small>需要隐藏</small><strong>内部状态、实现细节、临时变量</strong></div>
+          </div>
+        </div>
+        <div class="mark"></div><div class="footer"><span>04 / 10</span><b>ReactGo</b></div>
+      </section>
+
+      <section class="card" data-name="05-state">
+        <div class="brand"><div class="brand-left"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="ip"><strong>ReactGo</strong><span>State model</span></div></div><div class="tag">ReactGo</div></div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>04 · 状态管理</span></div>
+          <h1>状态越少，系统越稳</h1>
+          <p class="lede">不要急着选库。先区分本地状态、服务端状态、URL 状态和派生状态。</p>
+          <div class="points">
+            <div class="point"><span class="num">L</span><div><h2>Local</h2><p>只影响一个局部交互，留在组件附近。</p></div></div>
+            <div class="point"><span class="num">S</span><div><h2>Server</h2><p>来自接口的数据，需要缓存、失效和重试。</p></div></div>
+            <div class="point"><span class="num">U</span><div><h2>URL</h2><p>筛选、分页、搜索词，应该可以分享和恢复。</p></div></div>
+          </div>
+        </div>
+        <div class="mark"></div><div class="footer"><span>05 / 10</span><b>ReactGo</b></div>
+      </section>
+
+      <section class="card" data-name="06-api">
+        <div class="brand"><div class="brand-left"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="ip"><strong>ReactGo</strong><span>API contract</span></div></div><div class="tag">ReactGo</div></div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>05 · 接口契约</span></div>
+          <h1>接口不是拿到数据就完事</h1>
+          <p class="lede">前端要关心契约：字段是否稳定、错误是否可解释、分页是否一致、权限是否可预期。</p>
+          <div class="terminal"><div class="bar"><i></i><i></i><i></i></div><div class="code"><span class="green">type</span> ApiResult =
+  | { ok: true; data: Data }
+  | { ok: false; message: string }
+
+UI 只消费被整理过的数据。</div></div>
+        </div>
+        <div class="mark"></div><div class="footer"><span>06 / 10</span><b>ReactGo</b></div>
+      </section>
+
+      <section class="card" data-name="07-engineering">
+        <div class="brand"><div class="brand-left"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="ip"><strong>ReactGo</strong><span>DX</span></div></div><div class="tag">ReactGo</div></div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>06 · 工程化</span></div>
+          <h1>把重复劳动交给工具</h1>
+          <p class="lede">格式化、类型检查、lint、测试、构建预检，都应该在提交前暴露问题。</p>
+          <div class="points">
+            <div class="point"><span class="num">A</span><div><h2>自动化</h2><p>能机器检查的，就不要靠人肉记忆。</p></div></div>
+            <div class="point"><span class="num">B</span><div><h2>可回滚</h2><p>每次发布都要知道坏了怎么退回来。</p></div></div>
+            <div class="point"><span class="num">C</span><div><h2>可观察</h2><p>线上问题要能定位，而不是只会刷新重试。</p></div></div>
+          </div>
+        </div>
+        <div class="mark"></div><div class="footer"><span>07 / 10</span><b>ReactGo</b></div>
+      </section>
+
+      <section class="card" data-name="08-deploy">
+        <div class="brand"><div class="brand-left"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="ip"><strong>ReactGo</strong><span>Ship</span></div></div><div class="tag">ReactGo</div></div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>07 · 部署思维</span></div>
+          <h1>上线不是最后一步</h1>
+          <p class="lede">上线只是产品进入真实环境。你还需要灰度、监控、回滚、缓存策略和用户反馈闭环。</p>
+          <div class="mono">Preview -> Test -> Deploy -> Observe</div>
+          <div class="quote">能稳定发布的人，才真正拥有自己的代码。</div>
+        </div>
+        <div class="mark"></div><div class="footer"><span>08 / 10</span><b>ReactGo</b></div>
+      </section>
+
+      <section class="card" data-name="09-ai-coding">
+        <div class="brand"><div class="brand-left"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="ip"><strong>ReactGo</strong><span>AI coding</span></div></div><div class="tag">ReactGo</div></div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>08 · AI 编程</span></div>
+          <h1>会提需求，比会贴报错更重要</h1>
+          <p class="lede">把目标、边界、验收标准、现有代码风格讲清楚，AI 才能成为工程搭档。</p>
+          <div class="points">
+            <div class="point"><span class="num">1</span><div><h2>给上下文</h2><p>说明业务目的、相关文件和不能改的边界。</p></div></div>
+            <div class="point"><span class="num">2</span><div><h2>给验收</h2><p>告诉它什么叫完成，而不是只说“优化一下”。</p></div></div>
+            <div class="point"><span class="num">3</span><div><h2>要复核</h2><p>AI 能提速，但你仍然要负责判断。</p></div></div>
+          </div>
+        </div>
+        <div class="mark"></div><div class="footer"><span>09 / 10</span><b>ReactGo</b></div>
+      </section>
+
+      <section class="card" data-name="10-closing">
+        <div class="brand"><div class="brand-left"><img class="logo" src="../reactgo-logo.jpg" alt="" /><div class="ip"><strong>ReactGo</strong><span>Keep shipping</span></div></div><div class="tag">ReactGo</div></div>
+        <div class="content">
+          <div class="eyebrow"><span class="dot"></span><span>09 · 最后的检查清单</span></div>
+          <h1>写完代码后，问自己 5 个问题</h1>
+          <div class="points">
+            <div class="point"><span class="num">1</span><div><h2>用户失败时看见什么？</h2><p>空状态、错误态、加载态是否完整。</p></div></div>
+            <div class="point"><span class="num">2</span><div><h2>下个人能不能接手？</h2><p>命名、边界、提交记录是否清楚。</p></div></div>
+            <div class="point"><span class="num">3</span><div><h2>上线后怎么知道坏了？</h2><p>日志、监控、回滚路径是否准备好。</p></div></div>
+          </div>
+        </div>
+        <div class="mark"></div><div class="footer"><span>10 / 10</span><b>ReactGo</b></div>
+      </section>
+    </main>
+  </body>
+</html>
